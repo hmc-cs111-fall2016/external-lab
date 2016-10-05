@@ -43,7 +43,6 @@ following order:
 
    1. Intermediate representation
       1. Data structures, i.e., case classes
-      2. Sugar (if you want)
    2. Parser
       1. Tests
       2. Implementation
