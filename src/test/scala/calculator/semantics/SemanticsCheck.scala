@@ -26,7 +26,7 @@ object CalcInterpreterSpec extends Properties("Interpreter") with CalcSugar {
     } 
     
     property("addition") = forAll { (n1: Int, n2: Int) ⇒
-      (n1 |+| n2) ~> (n1 + n2)   
+      (Plus(Num(n1), Num(n2))) ~> (n1 + n2)   
     } 
     
     property("subtraction") = forAll { (n1: Int, n2: Int) ⇒
