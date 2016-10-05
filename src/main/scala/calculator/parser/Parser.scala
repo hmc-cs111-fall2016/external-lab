@@ -35,7 +35,11 @@ object CalcParser extends JavaTokenParsers with PackratParsers {
         
     // factors
     lazy val fact: PackratParser[Expr] =
-      number
+      (   number
+        | "("~>expr<~")" )   // NOTE: we don't need any more IR here!
+        // ALSO: the ~> and <~ combinators throw away their left and
+        //       right operands, respectively. See:
+        // http://www.scala-lang.org/files/archive/api/2.11.8/scala-parser-combinators/index.html#scala.util.parsing.combinator.Parsers$Parser
       
     // numbers
     def number: Parser[Num] = wholeNumber ^^ {s ⇒ Num(s.toInt)}

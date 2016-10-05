@@ -34,4 +34,8 @@ object CalcParseSpec extends Properties("Parser") with CalcSugar {
     property("division") = forAll { (n1: Int, n2: Int) ⇒
       s"$n1 / $n2" ~> (n1 |/| n2)   
     } 
+    
+    property("parenthetical") = forAll { (n1: Int, n2: Int) ⇒
+      s"$n1 * ($n2 + $n2)" ~> (n1 |*| (n2 |+| n2))   
+    } 
 }
